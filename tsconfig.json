@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2020",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "outDir": "dist",
+    "esModuleInterop": true
+  },
+  "include": [
+    "src/**/*",
+    ".eslintrc.js"
+  ]
+}
