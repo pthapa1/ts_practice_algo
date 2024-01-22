@@ -37,6 +37,34 @@ for (let i = 0; i < currentApplications.length; i++) {
 }
 
 console.log("Initial vs Final", mapComparator);
+const reversedFinalPositions = Object.keys(
+  mapFinalPositionForElements,
+).reverse();
+
+for (let i = 0; i < reversedFinalPositions.length - 1; i++) {
+  const position = reversedFinalPositions[i];
+  const applicationId = mapFinalPositionForElements[position]; // using this applicaiton id A
+  if (
+    mapComparator[applicationId].initial_position !==
+    mapComparator[applicationId].final_position
+  ) {
+    mapComparator[applicationId].initial_position = parseInt(position); // change the initial position pick final position
+    // what's the initial position of the app?
+    const initialPositonOfApplication =
+      mapComparator[applicationId].initial_position;
+
+    for (
+      let i = initialPositonOfApplication;
+      i < reversedFinalPositions.length;
+      i++
+    ) {
+      // loop inside the object and decrement initial position by 1
+    }
+  }
+}
+// for (let i = 0 + 1; i < 4; i++) {
+//   console.log("hello number", i);
+// }
 
 /*
  * 
