@@ -1,3 +1,3 @@
 # ts_playground
 
-- Run `./src/index.ts` with `pnpm start`
+- Run `./src/index.ts` with `pnpm bs`
