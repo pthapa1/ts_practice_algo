@@ -8,7 +8,8 @@
     "lint": "eslint . --fix",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "start": "pnpx tsx ./src/index.ts"
+    "start": "node ./dist/index.js",
+    "bs": "pnpm tsc && pnpm start"
   },
   "keywords": [],
   "author": "",
