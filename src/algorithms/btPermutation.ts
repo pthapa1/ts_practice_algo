@@ -18,12 +18,10 @@ export function allPossiblePermutation(distinctArray: number[]) {
   backtrack(distinctArray, []);
   return output;
 }
-allPossiblePermutation([1, 2, 3]);
-// allPossiblePermutation([1, 0]);
-// allPossiblePermutation([1]);
-//
-//
-function permute(nums: number[]): number[][] {
+/**
+ * @description Another way of doing this
+ * @example 
+ function permute(nums: number[]): number[][] {
   const output: number[][] = [];
 
   function backtrack(start: number) {
@@ -40,11 +38,7 @@ function permute(nums: number[]): number[][] {
       [nums[start], nums[i]] = [nums[i], nums[start]];
     }
   }
-
   backtrack(0);
   return output;
 }
-
-permute([1, 2, 3]);
-permute([1, 0]);
-permute([1]);
+ * */
