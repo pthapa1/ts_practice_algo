@@ -1,16 +1,26 @@
 {
   "compilerOptions": {
     "strict": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "target": "ES2020",
     "sourceMap": true,
     "strictNullChecks": true,
     "outDir": "dist",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@algorithms/*": [
+        "src/algorithms/*"
+      ]
+    }
   },
   "include": [
     "src/**/*",
-    ".eslintrc.cjs"
+    "babel.config.js",
+    "eslintrc.config.js",
+    "jest.config.ts",
+    "**/*.ts",
+    "**/*.tsx"
   ]
 }
