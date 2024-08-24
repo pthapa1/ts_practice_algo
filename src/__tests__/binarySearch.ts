@@ -1,7 +1,7 @@
 import {
   binarySearchWithBt,
   binarySearchWithLoop,
-} from "@algorithms/binarySearch";
+} from "@algorithms/bs_binarySearch";
 
 const tests = [
   {
