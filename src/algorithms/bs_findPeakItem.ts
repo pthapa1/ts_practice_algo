@@ -22,7 +22,7 @@ Constraints:
 nums[i] != nums[i + 1] for all valid i.
 [1,2,1,3,5,6,4]
 */
-function findPeakItem(nums: number[]) {
+export function findPeakItem(nums: number[]) {
   let pL = 0;
   let pR = nums.length - 1;
   while (pL < pR) {
