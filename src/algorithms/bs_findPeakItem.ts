@@ -22,6 +22,7 @@ Constraints:
 nums[i] != nums[i + 1] for all valid i.
 [1,2,1,3,5,6,4]
 */
+
 export function findPeakItem(nums: number[]) {
   let pL = 0;
   let pR = nums.length - 1;
@@ -39,3 +40,46 @@ export function findPeakItem(nums: number[]) {
   // when pL === pR, we've found the peak
   return pL;
 }
+
+// function peakItem(arr: number[]) {
+//   const pL = 0;
+//   const pR = arr.length - 1;
+//   let middleIndex = Math.floor((pL + pR) / 2);
+//
+//   while (middleIndex - 1 >= pL || middleIndex + 1 <= pR) {
+//     const nL = middleIndex - 1;
+//     const nR = middleIndex + 1;
+//     if (arr[middleIndex] > arr[nL] && arr[middleIndex] > arr[nR]) {
+//       return middleIndex;
+//     }
+//     // nL is greater, go left
+//     if (arr[middleIndex] < arr[nL] && arr[middleIndex] > arr[nR]) {
+//       middleIndex = nL;
+//     }
+//     // nR is greatest, go right
+//     if (arr[middleIndex] > arr[nL] && arr[middleIndex] < arr[nR]) {
+//       middleIndex = nR;
+//     }
+//   }
+//   return -1;
+// }
+//
+// // similar to my way but something that works :) . Copied from leetcode
+// function findPeakElement(nums: number[]): number {
+//   let start = 0;
+//   let end = nums.length - 1;
+//   while (start <= end) {
+//     const mid = Math.floor(start + (end - start) / 2);
+//     const leftSmaller = mid === 0 || nums[mid - 1] < nums[mid];
+//     const rightSmaller = mid === nums.length - 1 || nums[mid + 1] < nums[mid];
+//     if (leftSmaller && rightSmaller) {
+//       return mid;
+//     } else if (leftSmaller) {
+//       start = mid + 1;
+//     } else {
+//       end = mid - 1;
+//     }
+//   }
+//
+//   return -1;
+// }
