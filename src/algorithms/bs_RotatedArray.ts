@@ -28,7 +28,7 @@ Rotating means shifting right.
 They are rotated but they are still sorted.
 Once the rotation starts, smallest is not the leftMost Oth index item. 
  * */
-export function bs_rotatedArray(
+export function bs_rotatedArrayRecursion(
   arr: number[],
   pL = 0,
   pR = arr.length - 1,
@@ -44,8 +44,8 @@ export function bs_rotatedArray(
     (arr[pL] === arr[pR] && middleNumber !== arr[pR])
   ) {
     return Math.min(
-      bs_rotatedArray(arr, pL, middleIndex),
-      bs_rotatedArray(arr, middleIndex + 1, pR),
+      bs_rotatedArrayRecursion(arr, pL, middleIndex),
+      bs_rotatedArrayRecursion(arr, middleIndex + 1, pR),
     );
   }
 
@@ -53,8 +53,23 @@ export function bs_rotatedArray(
   if (arr[pL] < arr[pR]) return arr[pL];
   // if the smallest item is in the right half
   if (arr[pR] < middleNumber) {
-    return bs_rotatedArray(arr, middleIndex + 1, pR);
+    return bs_rotatedArrayRecursion(arr, middleIndex + 1, pR);
   }
   // if the smallest is in the left half
-  return bs_rotatedArray(arr, pL, middleNumber);
+  return bs_rotatedArrayRecursion(arr, pL, middleNumber);
+}
+
+export function bs_rotatedArrayWhile(arr: number[]) {
+  let pL = 0;
+  let pR = arr.length - 1;
+  while (pL < pR) {
+    const middleIndex = Math.floor((pL + pR) / 2);
+    if (pL === pR && pR === middleIndex) return arr[pL];
+    if (arr[pR] < arr[middleIndex]) {
+      pL = middleIndex + 1;
+    } else {
+      pR = middleIndex;
+    }
+  }
+  return arr[pL];
 }
