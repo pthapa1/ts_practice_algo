@@ -64,7 +64,11 @@ export function bs_rotatedArrayWhile(arr: number[]) {
   let pR = arr.length - 1;
   while (pL < pR) {
     const middleIndex = Math.floor((pL + pR) / 2);
-    if (pL === pR && pR === middleIndex) return arr[pL];
+    // handle duplicates
+    if (arr[pL] === arr[pR] && arr[middleIndex] === arr[pR]) {
+      pL += 1;
+      pR -= 1;
+    }
     if (arr[pR] < arr[middleIndex]) {
       pL = middleIndex + 1;
     } else {
