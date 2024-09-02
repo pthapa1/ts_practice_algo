@@ -27,6 +27,8 @@ Notes:
 Rotating means shifting right. 
 They are rotated but they are still sorted.
 Once the rotation starts, smallest is not the leftMost Oth index item. 
+if there are duplicates we handle them by shrinking the size of the array. 
+Here, the worst case scenario is when all the items are same 
  * */
 export function bs_rotatedArrayRecursion(
   arr: number[],
