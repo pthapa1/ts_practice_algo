@@ -42,4 +42,4 @@ Explanation: The pairs with an absolute difference of 2 are:
 - [3,2,1,5,4]
 - [3,2,1,5,4]
  */
-export function wft() {}
+export function findClosestPair() {}
