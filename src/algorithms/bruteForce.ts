@@ -1,5 +1,5 @@
 /*
-A solution that has not been optimized for time complexity 
+A solution that has not been optimized for time complexity.
 */
 
 // running sum of 1d array. Input: [1, 2, 3, 4] => [1, 3, 6, 4]
@@ -42,4 +42,18 @@ Explanation: The pairs with an absolute difference of 2 are:
 - [3,2,1,5,4]
 - [3,2,1,5,4]
  */
-export function findClosestPair() {}
+export function findPairWithAbsoluteDifference(
+  arr: number[],
+  target: number,
+): number {
+  let output = 0;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      // arr[i] - arr[j] === -1 * target || arr[i] - arr[j] === target
+      if (Math.abs(arr[i] - arr[j]) === target) {
+        output++;
+      }
+    }
+  }
+  return output;
+}
