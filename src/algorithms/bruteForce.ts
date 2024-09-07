@@ -57,3 +57,30 @@ export function findPairWithAbsoluteDifference(
   }
   return output;
 }
+
+/**
+1 -/+ 1 = 0 / 2
+2 = 1/2
+2 = 1/3
+1 = 0 / 2
+//once we do that 
+//add current to the hash map. 
+ * */
+
+/**
+ * @description: Optimized solution with a hashmap.
+ * */
+export function findPairWithAbsoluteDifferenceOptimized(
+  arr: number[],
+  target: number,
+) {
+  let output = 0;
+  const seen = new Map<number, boolean>(); // keep track of we  processed
+  for (let i = 0; i < arr.length; i++) {
+    const curr = arr[i];
+    if (seen.has(curr - target)) output++;
+    if (seen.has(curr + target)) output++;
+    seen.set(curr, true);
+  }
+  return output;
+}
