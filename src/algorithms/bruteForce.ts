@@ -73,7 +73,7 @@ export function findPairWithAbsoluteDifference(
 export function findPairWithAbsoluteDifferenceOptimized(
   arr: number[],
   target: number,
-) {
+): number {
   let output = 0;
   const seen = new Map<number, boolean>(); // keep track of we  processed
   for (let i = 0; i < arr.length; i++) {
