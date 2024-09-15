@@ -13,7 +13,7 @@ export function canPlaceFlowers(arr: number[], n: number): boolean {
       count++;
     }
   }
-  // at leat n should be present
+  // at most n should be present
   return count >= n;
 }
 export function canPlaceFlowersCopied(flowerbed: number[], n: number): boolean {
