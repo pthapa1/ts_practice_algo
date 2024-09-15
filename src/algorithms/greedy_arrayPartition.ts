@@ -11,19 +11,18 @@ So the maximum possible sum is 4.
 
 Example 2:
 Input: nums = [6,2,6,5,1,2]
+[1, 2, 2, 5, 6, 6]
 Output: 9
 Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6). min(2, 1) + min(2, 5) + min(6, 6) = 1 + 2 + 6 = 9.
  
  * */
 export function arrrayPartitioning(arr: number[]): number {
+  arr.sort((a, b) => a - b);
   let sum = 0;
   // if the array's length is odd, then return 0
   if (arr.length % 2 !== 0) return sum;
   for (let i = 0; i < arr.length; i = i + 2) {
-    // group them
-    const currItem = arr[i];
-    const pair = arr[i + 1];
-    sum += Math.min(currItem, pair);
+    sum += Math.min(arr[i], arr[i + 1]);
   }
   return sum;
 }
