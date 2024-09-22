@@ -39,45 +39,61 @@ Since not every customer received the correct change, the answer is false.
 - Do you have enough money in the first place?
 - Do you have 5s to give the change, if the change require 5s, 
  * */
-export function lemonadeStand(bills: number[]): boolean {
-  const lemonadeCost = 5;
-  const moneyDrawer = new Map<number, number>();
-  let currTotal = 0;
-  for (let i = 0; i < bills.length; i++) {
-    // if the customer gives you exact lemonade cost
-    const customerMoney = bills[i];
-    if (customerMoney === lemonadeCost) {
-      moneyDrawer.set(customerMoney, (moneyDrawer.get(customerMoney) ?? 0) + 1);
-      currTotal += lemonadeCost;
+
+export function lemodaneStand(bills: number[]) {
+  let five = 0;
+  let ten = 0;
+  for (const bill of bills) {
+    if (bill === 5) {
+      five++;
+    } else if (bill === 10) {
+      if (five <= 0) return false;
+      five--;
+      ten++;
     } else {
-      const change = customerMoney - lemonadeCost; // customer gave you more money
-      if (change > currTotal) return false; // Check if I have enough total for change
-      moneyDrawer.set(customerMoney, (moneyDrawer.get(customerMoney) ?? 0) + 1);
-      currTotal += lemonadeCost;
-      // if the change is 5 (customer gave you 10)
-      if (change === 5) {
-        if ((moneyDrawer.get(5) ?? 0) >= 1) {
-          moneyDrawer.set(5, (moneyDrawer.get(5) ?? 0) - 1); // reduce the bill from the drawer
-        } else {
-          return false;
-        }
-      }
-      // customer gave you 20, means you return 15
-      else if (change === 15) {
-        // true if we have at least 5 and 10, or 5, 5, 5 else FALSE
-        const threeFives = (moneyDrawer.get(5) ?? 0) >= 3;
-        const oneTen = (moneyDrawer.get(10) ?? 0) >= 1;
-        const oneFive = (moneyDrawer.get(5) ?? 0) >= 1;
-        if (threeFives) {
-          moneyDrawer.set(5, (moneyDrawer.get(5) ?? 0) - 3);
-        } else if (oneTen && oneFive) {
-          moneyDrawer.set(5, (moneyDrawer.get(5) ?? 0) - 1);
-          moneyDrawer.set(10, (moneyDrawer.get(10) ?? 0) - 1);
-        } else {
-          return false;
-        }
+      if (five > 0 && ten > 0) {
+        five--;
+        ten--;
+      } else if (five >= 3) {
+        five -= 3;
+      } else {
+        return false;
       }
     }
   }
   return true;
 }
+// lesson learned.
+// Focus on the core operation.
+// Give 5 back if you receive 10, give 15 back if you receive 20
+// You only need 5 and 10s bills
+// if you make through all the customers then return true else false
+/*
+ function lemonadeChange(bills: number[]): boolean {
+  let fiveDollarBills = 0;
+  let tenDollarBills = 0;
+  for (let i = 0; i < bills.length; i++) {
+    const customerBill = bills[i];
+    if (customerBill === 5) {
+      fiveDollarBills += 1;
+    } else if (customerBill === 10) {
+      if (fiveDollarBills > 0) {
+        fiveDollarBills -= 1;
+        tenDollarBills += 1;
+      } else {
+        return false;
+      }
+    } else {
+      if (fiveDollarBills > 0 && tenDollarBills > 0) {
+        fiveDollarBills -= 1;
+        tenDollarBills -= 1;
+      } else if (fiveDollarBills >= 3) {
+        fiveDollarBills -= 3;
+      } else {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+ * */
