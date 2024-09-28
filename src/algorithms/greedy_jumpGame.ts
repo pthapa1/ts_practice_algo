@@ -4,16 +4,16 @@
 
 function jump(nums: number[]): number {
   let jumpCount = 0;
-  let currentJumpEnd = 0;
-  let maxReachable = 0;
+  let coverage = 0; // current ranage's end
+  let farthest = 0; // what's the maximum number in the range
   const lastIndex = nums.length - 1;
   for (let i = 0; i < lastIndex; i++) {
-    maxReachable = Math.max(maxReachable, i + nums[i]);
+    farthest = Math.max(farthest, i + nums[i]);
     // if you have exhausted all the previous jumps
-    if (i === currentJumpEnd) {
+    if (i === coverage) {
       jumpCount++;
-      currentJumpEnd = maxReachable;
-      if (currentJumpEnd >= lastIndex) break;
+      coverage = farthest;
+      if (coverage >= lastIndex) break;
     }
   }
   return jumpCount;
