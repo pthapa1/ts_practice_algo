@@ -17,17 +17,15 @@ Input: num = "10", k = 2
 Output: "0"
 Explanation: Remove all the digits from the number and it is left with nothing which is 0.
  * */
-function removeKDigits(nums: string, k: number) {
-  let maxNumber = 0;
-  for (let i = 0; i <= nums.length - k; i++) {
-    let extractedString = "";
-    let extractedNumber = 0;
+function removeKdigits(num: string, k: number) {
+  let minNum = Number.POSITIVE_INFINITY;
+  for (let i = 0; i < num.length; i++) {
+    let stringToRemove = "";
     for (let j = 0; j < k; j++) {
-      extractedString += nums[i + j]; // access next digit
-      extractedNumber = Number(extractedString);
+      stringToRemove += num[i + j];
     }
-    maxNumber = Math.max(maxNumber, extractedNumber);
+    const numsAfterItem = Number(num.replace(stringToRemove, ""));
+    minNum = Math.min(minNum, numsAfterItem);
   }
-  const valToReturn = nums.replace(String(maxNumber), "");
-  return valToReturn;
+  return String(minNum);
 }
